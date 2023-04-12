@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
+
+:root {
+  font-family: Inter;
+  line-height: 1.5;
+  font-weight: 500;
+  color-scheme: light dark;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* .ant-menu-item:hover::after,
+.ant-menu-item:hover::before{
+  background-color: #00959C;
+  color: #FFFFFF;
+  width: 80%;
+  transition: background-color 0.3s ease, color 0.3s ease;
+} */
+
+.ant-menu-item:focus,
+.ant-menu-item:hover,
+.ant-menu-item-content {
+  background-color: #00959C !important;
+  color: #FFFFFF !important;
+  width: 75%;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.ant-menu-item-width {
+  background-color: #00959C;
+  color: #FFFFFF;
+  width: 75%;
+}
+
+.emoji {
+  font-size: 30px;
+  animation: waving-hand 2.5s ease-in-out infinite;
+  transform-origin: 70% 70%;
+}
+
+@keyframes waving-hand {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4.0deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+
+
+
+

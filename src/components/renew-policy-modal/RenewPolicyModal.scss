@@ -1,0 +1,49 @@
+.CustomModalBody label{
+    font-size: 13px !important;
+    font-family: Inter;
+    font-weight: 600;
+}
+
+.ant-upload-text{
+    font-family: "Inter";
+    font-weight: 600;
+    font-size: 14px !important;
+}
+
+.ant-upload-hint{
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 10px !important;
+}
+
+.upload-list-inline .ant-upload-list-item {
+    float: left;
+    width: 200px;
+    margin-inline-end: 8px;
+}
+
+@media screen and (max-width: 768px) {
+    .continue{
+        margin-left: 11rem !important;
+    }
+    .ModalHeader{
+        font-size: 14px !important;
+        margin-top: -1rem;
+    }
+    .ModalSmall{
+        font-size: 12px !important;
+        line-height: 1.5 !important;
+    }
+    .card{
+        margin-left: -2rem !important;
+    }
+    .thirdParty{
+        max-height: 100rem !important;
+        margin-bottom: -1rem !important;
+    }
+    .theft{
+        max-height: 100rem !important;
+        margin-bottom: -0.1rem !important;  
+    } 
+}
+  

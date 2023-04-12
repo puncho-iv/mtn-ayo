@@ -1,0 +1,72 @@
+.container {
+    height: 87vh;
+    width: 100vw;
+    background-color: #ffffff;
+    margin: 0 0 0 -25px;
+  }
+  
+  .bgColor {
+    background-color: transparent !important;
+    font-size: 15px;
+    align-items: center;
+    position: absolute;
+    font-weight: 500;
+    top: -15px;
+    font-family: Inter;
+  }
+  
+  .table-row{
+    margin-bottom: -10px;
+  }
+  
+  @media screen and (max-width: 1440px) {
+   .table-card{
+     margin-left: 4rem;
+   }
+   .section-title{
+    margin-left: 7rem !important;
+   }
+   .title{
+    margin-left: 4rem !important;
+   }
+   .pagination{
+    margin-left: 4rem !important;
+   }
+ }
+
+ @media screen and (max-width: 768px) {
+  .avatar{
+    margin-left: -26rem !important;
+  }
+  .pagination{
+    margin-left: -2rem !important;
+    width: 70%;
+  }
+  .buyPolicy{
+    margin-left: 35rem !important;
+  }
+  .section-title{
+    margin-left: 4rem !important;
+  }
+  .title{
+    margin-left: 1rem !important;
+  }
+  .table-card{
+    margin-left: 1rem !important;
+    max-width: 40rem !important;  
+  }
+  .container{
+    margin-left: -17rem !important;
+  }
+  .headerDivide{
+    margin-left: 1rem !important;
+  }
+ }
+
+  
+  
+  
+  
+  
+  
+  
