@@ -201,7 +201,7 @@ export default function DashboardSubscriptions() {
           //   </Tag>
           // );
           tags.push(
-            <Tag color="blue" style={{ fontSize: "8px" }}>
+            <Tag color="blue" style={{ fontSize: "8px", borderRadius: "10px" }}>
               {daysToExpire} days to expire
             </Tag>
           );
@@ -234,26 +234,24 @@ export default function DashboardSubscriptions() {
               ) : null}
             </div>
             <div>
-              <div style={{ fontSize: "16px" }}>{policy}</div>
+              <div style={{ fontSize: "16px",  }}>{policy}</div>
               <div>{tags}</div>
             </div>
           </div>
         );
       },
     },
-    
-    
     {
       dataIndex: "status",
       title: "Status",
       width: 150,
       render: (status:string) => {
         if (status === "Active") {
-          return <Tag color="green">Active</Tag>;
+          return <Tag color="green" style={{borderRadius: "10px"}}>Active</Tag>;
         } else if (status === "Inactive") {
-          return <Tag color="red">Inactive</Tag>;
+          return <Tag color="red" style={{borderRadius: "10px"}}>Inactive</Tag>;
         } else if (status === "Pending") {
-          return <Tag color="yellow">Pending</Tag>;
+          return <Tag color="yellow" style={{borderRadius: "10px"}}>Pending</Tag>;
         } else {
           return null;
         }
@@ -293,13 +291,12 @@ export default function DashboardSubscriptions() {
       ),
     },
   ];
-
   return (
     <div>
       <Row>
       <Layout className="container">
       <Row>
-            <Col xs={19} sm={20} md={20} lg={20}>
+            <Col xs={19} sm={20} md={20} lg={20} xl={20} xxl={20}>
         <Header
           style={{
             backgroundColor: "white",
@@ -315,8 +312,8 @@ export default function DashboardSubscriptions() {
                 xs={{ span: 18, pull: 24 }}
                 sm={{ span: 18, pull: 24 }}
                 md={{ span: 8, offset: 8 }}
-                lg={{ span: 18, pull: 20 }}
-                xl={{ span: 20, offset: 20 }}
+                lg={{ span: 18, pull: 24 }}
+                xl={{ span: 20, offset: 24 }}
                 xxl={{ span: 20, offset: 24 }}
               >
                 <div className="user">
@@ -377,9 +374,9 @@ export default function DashboardSubscriptions() {
                 xs={{ span: 15, pull: 24 }}
                 sm={{ span: 8, pull: 22 }}
                 md={{ span: 10, pull: 9 }}
-                lg={{ span: 8, pull: 20 }}
-                xl={{ span: 5, offset: 20 }}
-                xxl={{ span: 24, offset: 12 }}
+                lg={{ span: 8, pull: 11 }}
+                xl={{ span: 5, offset: 11 }}
+                xxl={{ span: 24, offset: 16 }}
               >
                 <Button
                   className="buyPolicy"
@@ -393,7 +390,7 @@ export default function DashboardSubscriptions() {
                     fontSize: "0.8rem",
                     lineHeight: "24px",
                     fontFamily: "Inter",
-                    margin: "-1px 1035px 10px",
+                    margin: "-5px 1035px 10px",
                     alignItems: "center",
                   }}
                 >
@@ -409,13 +406,13 @@ export default function DashboardSubscriptions() {
                 md={{ span: 24, pull: 0 }}
                 lg={{ span: 24, offset: 0 }}
                 xl={{ span: 24, offset: 0 }}
-                xxl={{ span: 24, offset: 24 }}
+                xxl={{ span: 22, offset: 0 }}
                 >
           <div className="card">
             <Card
               style={{
                 maxWidth: "100%",
-             
+                
                 height: "67%",
                 left: 80,
                 top: 6,
