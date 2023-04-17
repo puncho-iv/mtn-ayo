@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
 
 :root {
-  font-family: Inter;
+  font-family: Inter ;
   line-height: 1.5;
   font-weight: 500;
   color-scheme: light dark;
@@ -12,18 +12,11 @@
 }
 
 html,
-body {
+body { 
+  background-color: #FFFFFF;
   margin: 0px;
   padding: 0px;
 }
-
-/* .ant-menu-item:hover::after,
-.ant-menu-item:hover::before{
-  background-color: #00959C;
-  color: #FFFFFF;
-  width: 80%;
-  transition: background-color 0.3s ease, color 0.3s ease;
-} */
 
 .ant-menu-item:focus,
 .ant-menu-item:hover,
@@ -32,11 +25,23 @@ body {
   color: #FFFFFF !important;
   width: 75%;
   transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 0;
 }
+
+/* .ant-col {
+  display: flex;
+}
+
+.ant-table
+.ant-spin-container{
+  display: flex;
+  width: 270rem !important;
+} */
 
 .ant-menu-item-width {
   background-color: #00959C;
   color: #FFFFFF;
+  padding: 0%;
   width: 75%;
 }
 

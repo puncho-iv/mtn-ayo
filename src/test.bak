@@ -1,182 +1,21 @@
-import React, { useState } from 'react';
-import { Button, Modal } from 'antd';
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-const App: React.FC = () => {
-  const [open, setOpen] = useState(false);
-  const [confirmLoading, setConfirmLoading] = useState(false);
-  const [modalText, setModalText] = useState('Content of the modal');
-
-  const showModal = () => {
-    setOpen(true);
-  };
-
-  const handleOk = () => {
-    setModalText('The modal will be closed after two seconds');
-    setConfirmLoading(true);
-    setTimeout(() => {
-      setOpen(false);
-      setConfirmLoading(false);
-    }, 2000);
-  };
-
-  const handleCancel = () => {
-    console.log('Clicked cancel button');
-    setOpen(false);
-  };
-
-  return (
-    <>
-      <Button type="primary" onClick={showModal}>
-        Open Modal with async logic
-      </Button>
-      <Modal
-        title="Title"
-        open={open}
-        onOk={handleOk}
-        confirmLoading={confirmLoading}
-        onCancel={handleCancel}
-      >
-        <p>{modalText}</p>
-      </Modal>
-    </>
-  );
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDX3krrSf2NPFyQVLj51StScATeEoH8T0A",
+  authDomain: "test-1-77388.firebaseapp.com",
+  projectId: "test-1-77388",
+  storageBucket: "test-1-77388.appspot.com",
+  messagingSenderId: "456723448298",
+  appId: "1:456723448298:web:2b934c5a50beb893617293",
+  measurementId: "G-3B9Y7Y136V"
 };
 
-export default App;
-
-
-
-
-
-
-
-
-import { useState } from "react";
-import { Layout, Menu, Typography, Card } from "antd";
-import { Outlet } from "react-router-dom";
-import {
-  RiHome7Line,
-  RiCoinsLine,
-  RiHandCoinLine,
-  RiQuestionnaireLine,
-} from "react-icons/ri";
-import { FiArrowUpRight } from "react-icons/fi";
-import { BsCreditCard, BsPatchQuestion } from "react-icons/bs";
-
-const { Header, Content, Sider } = Layout;
-const { Title, Link } = Typography;
-const ICON_SIZE = { fontSize: "16px" };
-
-export function DashboardLayout() {
-  const [collapsed, setCollapsed] = useState(false);
-
-  return (
-    <Layout>
-      <Header />
-      <Layout>
-        <Sider
-          theme="light"
-          style={{ background: "#F8F8F8", margin: "155px 0 0" }}
-          width={200}
-          collapsible
-          collapsed={collapsed}
-          onCollapse={(collapsed) => setCollapsed(collapsed)}
-        >
-          <Menu
-            mode="inline"
-            style={{
-              margin: "20px 20px 0",
-              background: "transparent",
-              border: "none",
-              height: "200px",
-              fontSize: "14px",
-              fontFamily: "Inter",
-              fontWeight: 600,
-            }}
-            defaultSelectedKeys={["home"]}
-          >
-            <Menu.Item
-              key="home"
-              icon={<RiHome7Line style={ICON_SIZE} />}
-            >
-              Home
-            </Menu.Item>
-            <Menu.Item
-              key="subscriptions"
-              icon={<BsCreditCard style={ICON_SIZE} />}
-            >
-              Subscriptions
-            </Menu.Item>
-            <Menu.Item
-              key="buy-policy"
-              icon={<RiCoinsLine style={ICON_SIZE} />}
-            >
-              Buy Policy
-            </Menu.Item>
-            <Menu.Item
-              key="claims"
-              icon={<RiHandCoinLine style={ICON_SIZE} />}
-            >
-              Claims
-            </Menu.Item>
-            <Menu.Item
-              key="faq"
-              icon={<RiQuestionnaireLine style={ICON_SIZE} />}
-            >
-              FAQ
-            </Menu.Item>
-          </Menu>
-        </Sider>
-
-        <Layout>
-          <Content>
-            <Card className="settingCard">
-              <BsPatchQuestion
-                style={{
-                  color: "#FFFFFF",
-                  fontSize: "22px",
-                  fontFamily: "Inter",
-                }}
-              />
-              <Typography
-                style={{
-                  color: "#FFFFFF",
-                  fontFamily: "Inter",
-                  marginTop: "11px",
-                  fontSize: "13px",
-                }}
-              >
-                Have Questions?
-              </Typography>
-              <Typography
-                style={{
-                  color: "#FFFFFF",
-                  fontSize: "9px",
-                  marginTop: "1px",
-                  maxWidth: "95%",
-                  fontWeight: "200",
-                  fontFamily: "Inter",
-                }}
-              >
-                We are here to help just get in touch with the link below
-              </Typography>
-              <Link
-                href="https://ant.design"
-                target="_blank"
-                style={{
-                  fontSize: "9.5px",
-                  color: "#FFFFFF",
-                  fontWeight: "300",
-                  fontFamily: "Inter",
-                  textDecoration: "underline",
-                  display: "flex",
-                  marginTop: "20px",
-                }}
-              >
-                Contact Us
-                <span>
-                  <FiArrowUpRight />
-                </span>
-              </Link>
-            </Card>
-          </Content>
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);

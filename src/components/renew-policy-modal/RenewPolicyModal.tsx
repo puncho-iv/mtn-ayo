@@ -135,6 +135,9 @@ export default function RenewPolicyModal({
   };
 
   return (
+    <Row>
+      <Col>
+
     <Modal
       title={
         <span
@@ -512,5 +515,7 @@ export default function RenewPolicyModal({
         </>
       )}
     </Modal>
+          </Col>
+    </Row>
   );
 }

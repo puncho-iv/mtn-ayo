@@ -2,6 +2,8 @@ import { useState, ReactNode, Key } from "react";
 import type { MenuProps } from "antd";
 import { Layout, Menu, theme, Typography, Card } from "antd";
 import { Outlet } from "react-router-dom";
+import beizure from "../../assets/Vector.png";
+import Logo from "../../assets/Logo.png";
 import {
   RiHome7Line,
   RiCoinsLine,
@@ -49,9 +51,9 @@ export function DashboardLayout() {
     token: { colorBgContainer  },
   } = theme.useToken();
   return (
-    <Layout style={{ height: "100vh",  }}>
+    <Layout style={{ height: "100vh", }}>
       <Header className="header" style={{ background: colorBgContainer }}>
-        <div className="logo" />
+          {/* <img src={Logo} alt="img"  style={{zIndex:"1", width: "170px", marginLeft: "-20px", marginTop: "25px"}}/> */}
         {/* <Menu theme="light" mode="horizontal" defaultSelectedKeys={['2']} items={items} /> */}
       </Header>
       <Layout>
@@ -62,6 +64,8 @@ export function DashboardLayout() {
           onCollapse={(value) => setCollapsed(value)}
           width={235}
           theme="light"
+          breakpoint="lg"
+          collapsedWidth="1"
           style={{
             backgroundColor: "#F8F8F8",
             height: "90%",
@@ -82,19 +86,23 @@ export function DashboardLayout() {
           />
           {!collapsed && (
            <Card style={{backgroundColor: "#00959C", margin: "-250px 22px 0", width: "80%"}}>
+              <img src={beizure} alt="curves" style={{marginTop: "-75px", width: "100px", marginLeft: "62px", zIndex: "-1", marginBottom:"-120px"}} />
               <BsPatchQuestion
                 style={{
                   color: "#FFFFFF",
-                  fontSize: "22px",
+                  fontSize: "25px",
                   fontFamily: "Inter",
+                  marginTop: "-100px",
+                  zIndex: "1"
                 }}
               />
               <Typography
                 style={{
                   color: "#FFFFFF",
                   fontFamily: "Inter",
-                  marginTop: "11px",
+                  marginTop: "3px",
                   fontSize: "15px",
+                  zIndex: "1"
                 }}
               >
                 Have Questions?
@@ -121,7 +129,7 @@ export function DashboardLayout() {
                   fontFamily: "Inter",
                   textDecoration: "underline",
                   display: "flex",
-                  marginTop: "25px",
+                  marginTop: "18px",
                 }}
               >
                 Contact Us

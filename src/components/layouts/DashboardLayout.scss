@@ -10,42 +10,29 @@
     margin-bottom: 0.2% !important;
 }
 
-.ant-layout-footer{
-    margin-bottom: 100rem;
-    margin-top: -100rem;
+.ant-menu-item-icon:hover{
+  color: #f8f8f8 !important;
 }
 
-.settingCard{
-    height: 25%;
-    width: 80.5%;
-    top: -155px;
-    left: 35px;
-    background-color: #00959C;
-  }
+.ant-layout-footer{
+    align-content: flex-end;
+    margin-bottom: 10rem !important;
+    margin-top: 6rem !important;
+}
+
+.header{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
+
 
   .footer{
     width: 110rem;
     height: 2rem;
-    margin: 70rem 10rem -20rem -12rem;
+    margin: 75rem 10rem -20rem -12rem;
     z-index:  0;
     background-color: transparent !important;
   }
 
-  @media screen and (max-width: 1440px) {
-    .footer{
-        margin-top: 127.8rem !important;
-    }
-  }
-
-  @media screen and (max-width: 768px) {
-    .footer{
-        margin-top: 72rem !important;
-        margin-left: -28rem;
-    }
-    .sider{
-        visibility: hidden !important;
-        background-color: transparent;
-    }
-  }
-  
   

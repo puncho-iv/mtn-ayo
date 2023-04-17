@@ -1,8 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
+
+
 .container {
+    display: flex;
     height: 87vh;
-    width: 100vw;
+    width: 103.9%;
     background-color: #ffffff;
     margin: 0 0 0 -25px;
+    flex-direction: column;
   }
   
   .bgColor {
@@ -14,59 +19,48 @@
     top: -15px;
     font-family: Inter;
   }
-  
   .table-row{
-    margin-bottom: -10px;
-  }
   
-  @media screen and (max-width: 1440px) {
-   .table-card{
-     margin-left: 4rem;
+    width: 65rem;
    }
-   .section-title{
-    margin-left: 7rem !important;
-   }
-   .title{
-    margin-left: 4rem !important;
-   }
-   .pagination{
-    margin-left: 4rem !important;
-   }
- }
 
- @media screen and (max-width: 768px) {
+
   .avatar{
-    margin-left: -26rem !important;
-  }
-  .pagination{
-    margin-left: -2rem !important;
-    width: 70%;
-  }
-  .buyPolicy{
-    margin-left: 35rem !important;
-  }
-  .section-title{
-    margin-left: 4rem !important;
-  }
-  .title{
-    margin-left: 1rem !important;
-  }
-  .table-card{
-    margin-left: 1rem !important;
-    max-width: 40rem !important;  
-  }
-  .container{
-    margin-left: -17rem !important;
-  }
-  .headerDivide{
-    margin-left: 1rem !important;
-  }
- }
+    margin-left: 50px;
+    display: flex;
+    padding: 0;
 
-  
-  
-  
-  
-  
-  
-  
+  }
+
+  .title{
+    margin-top: -90px;
+    margin-left: -20px;
+    font-size: 1.5rem;
+    font-family: "Inter";
+    letter-spacing: "-0.01em";
+    display: "flex";
+    font-weight: 600;
+  }
+
+  .title span{
+    display: flex;
+    margin-left: 150px;
+    margin-top: -68px;
+  }
+
+  .user{
+    display: flex;
+    margin-left: -170px;
+    margin-top: -40px;
+    flex-grow: 6;
+  }
+
+  @media screen and (max-width:768px) {
+    .ant-table-wrapper{
+      overflow-x: auto !important;
+    }
+    .card{
+      padding: 16px;
+    }
+  }
+

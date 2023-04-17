@@ -42,6 +42,14 @@ export default function DashboardSubscriptions() {
   const [step, setStep] = useState(1);
   const [isPolicyType, setPolicyType] = useState();
 
+  // const { useBreakpoint } = Grid;
+  // const screens = useBreakpoint();
+  interface RecordType {
+    registration: Date;
+    expiration: Date;
+    policy: string;
+  }
+  
   const paginationConfig = {
     pageSize: 4,
     style: { margin: "0 430px 0" },
@@ -92,22 +100,6 @@ export default function DashboardSubscriptions() {
       key: "3",
     },
   ];
-
-  // const policyType = [
-  //   {
-  //     key: "1",
-  //     policy: "Comprehensive",
-  //   },
-  //   {
-  //     key: "2",
-  //     policy: "Third party",
-  //   },
-  //   {
-  //     key: "3",
-  //     policy: "Third party & Theft",
-  //   },
-
-  // ]
 
   const dataSource = [
     {
@@ -174,8 +166,8 @@ export default function DashboardSubscriptions() {
       title: "Policy",
       key: "policy",
       className: "bgColor",
-      width: 200,
-      render: (policy, record) => {
+      width: 300,
+      render: (policy: string, record: RecordType) => {
         const registrationDate = new Date(record.registration);
         const currentDate = new Date();
         const expirationDate = new Date(record.expiration);
@@ -187,45 +179,75 @@ export default function DashboardSubscriptions() {
           (expirationDate.getTime() - currentDate.getTime()) /
             (1000 * 60 * 60 * 24)
         );
-
+    
+        const tags = [];
+    
+        if (expired) {
+          tags.push(
+            <Tag color="red" style={{ fontSize: "12px" }}>
+              Expired
+            </Tag>
+          );
+        } else if (due) {
+          tags.push(
+            <Tag color="orange" style={{ fontSize: "12px" }}>
+              Due soon
+            </Tag>
+          );
+        } else {
+          // tags.push(
+          //   <Tag color="green" style={{ fontSize: "12px" }}>
+          //     Active
+          //   </Tag>
+          // );
+          tags.push(
+            <Tag color="blue" style={{ fontSize: "8px" }}>
+              {daysToExpire} days to expire
+            </Tag>
+          );
+        }
+    
         return (
           <div
             style={{
-              backgroundColor: "#ECECED",
-              borderRadius: "50%",
-              width: "20px",
-              height: "20px",
-              marginRight: "50px",
-              marginTop: "-2px",
+              display: "flex",
+              alignItems: "center",
+              marginTop: "-5px",
             }}
           >
-            {policy ? (
-              <SlDiamond
-                style={{
-                  fontSize: "11px",
-                  margin: "0 5px 0",
-                }}
-              />
-            ) : null}
-            <span
+            <div
               style={{
-                marginLeft: "30px",
-                display: "flex",
-                alignItems: "center",
-                marginTop: "-25px",
+                backgroundColor: "#ECECED",
+                borderRadius: "50%",
+                width: "20px",
+                height: "20px",
+                marginRight: "10px",
               }}
             >
-              Policy
-            </span>
+              {policy ? (
+                <SlDiamond
+                  style={{
+                    fontSize: "11px",
+                    margin: "0 5px 0",
+                  }}
+                />
+              ) : null}
+            </div>
+            <div>
+              <div style={{ fontSize: "16px" }}>{policy}</div>
+              <div>{tags}</div>
+            </div>
           </div>
         );
       },
     },
+    
+    
     {
       dataIndex: "status",
       title: "Status",
       width: 150,
-      render: (status) => {
+      render: (status:string) => {
         if (status === "Active") {
           return <Tag color="green">Active</Tag>;
         } else if (status === "Inactive") {
@@ -258,7 +280,7 @@ export default function DashboardSubscriptions() {
       key: "action",
       className: "bgColor",
       width: 80,
-      render: (text, record) => (
+      render: () => (
         <Dropdown menu={{ items: menuItems }}>
           <a onClick={(e) => e.preventDefault()}>
             <Button>
@@ -274,113 +296,142 @@ export default function DashboardSubscriptions() {
 
   return (
     <div>
+      <Row>
       <Layout className="container">
+      <Row>
+            <Col xs={19} sm={20} md={20} lg={20}>
         <Header
           style={{
             backgroundColor: "white",
             padding: "24px 50px",
           }}
         >
-          <Title
-            level={3}
-            className="title"
-            style={{
-              margin: "-78px 0 0",
-              fontSize: "22px",
-              fontFamily: "Inter",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            Hello, Vikers
-            <span className="emoji">👋</span>
-          </Title>
           <div className="avatar">
-            <Space wrap size={16}>
-              <Avatar
-                size={48}
-                icon={<IoIosNotificationsOutline />}
-                style={{
-                  margin: "-105px 955px 0",
-                  fontSize: "20px",
-                  background: "#F8F8F8",
-                  color: "#4F4B5C",
-                }}
-              />
-            </Space>
-            <Space wrap size={16}>
-              <Avatar
-                size={48}
-                src={<img src={Dog} alt="avatar" />}
-                style={{ margin: "-230px 1025px 0", fontSize: "20px" }}
-              />
-            </Space>
+            <h3 className="title">
+              Hello, Vikers<span className="emoji">👋</span>
+            </h3>
+            <Row>
+              <Col
+                xs={{ span: 18, pull: 24 }}
+                sm={{ span: 18, pull: 24 }}
+                md={{ span: 8, offset: 8 }}
+                lg={{ span: 18, pull: 20 }}
+                xl={{ span: 20, offset: 20 }}
+                xxl={{ span: 20, offset: 24 }}
+              >
+                <div className="user">
+                  <Space wrap size={16}>
+                    <Avatar
+                      size={48}
+                      icon={<IoIosNotificationsOutline />}
+                      style={{
+                        margin: "-105px 945px 0",
+                        fontSize: "20px",
+                        background: "#F8F8F8",
+                        color: "#4F4B5C",
+                      }}
+                    />
+                  </Space>
+                  <Space wrap size={16}>
+                    <Avatar
+                      size={48}
+                      src={<img src={Dog} alt="avatar" />}
+                      style={{ margin: "-105px -925px 0", fontSize: "20px" }}
+                    />
+                  </Space>
+                </div>
+              </Col>
+            </Row>
           </div>
         </Header>
         <Divider
-        className="headerDivide"
+          className="headerDivide"
           style={{
-            margin: "-40px -250px 0",
+            margin: "-50px -250px 0",
             backgroundColor: "e7e7e7",
+            width: "96rem",
             zIndex: 0,
           }}
         />
 
         <Content>
-          <Title
-            level={3}
-            className="section-title"
-            style={{
-              margin: "20px 52px -25px",
-              fontSize: "18px",
-              fontWeight: "semibold",
-              fontFamily: "Inter",
-            }}
-          >
-            Active Subscriptions
-          </Title>
 
-          <Row>
-            <Col>
-              <Button
-                className="buyPolicy"
-                type="primary"
-                style={{
-                  backgroundColor: "#00959C",
-                  fontWeight: "600",
-                  height: "40px",
-                  width: "145px",
-                  fontSize: "14px",
-                  lineHeight: "24px",
-                  fontFamily: "Inter",
-                  margin: "0 980px 10px",
-                }}
+          <div className="mid">
+            <h3
+              className="section-title"
+              style={{
+                alignItems: "center",
+                margin: "20px 80px -25px",
+                fontSize: "18px",
+                color: "black",
+                fontWeight: "600",
+                fontFamily: "Inter",
+                width: "150rem",
+              }}
+            >
+              Active Subscriptions
+            </h3>
+
+            <Row>
+              <Col
+                xs={{ span: 15, pull: 24 }}
+                sm={{ span: 8, pull: 22 }}
+                md={{ span: 10, pull: 9 }}
+                lg={{ span: 8, pull: 20 }}
+                xl={{ span: 5, offset: 20 }}
+                xxl={{ span: 24, offset: 12 }}
               >
-                Buy New Policy
-              </Button>
-            </Col>
-          </Row>
-
-          <Card
-            className="table-card"
-            style={{
-              maxWidth: "70%",
-              height: "67%",
-              left: 50,
-              top: 5,
-              fontSize: "2.5px",
-            }}
-          >
-            <Row gutter={25} className="table-row">
-              <Col span={24}>
-                <Table
-                  dataSource={dataSource}
-                  columns={columns}
-                  pagination={paginationConfig}
-                />
-                {/* <Pagination showQuickJumper defaultCurrent={1} total={100} onChange={onChange} defaultPageSize={4} /> */}
+                <Button
+                  className="buyPolicy"
+                  type="primary"
+                  style={{
+                    backgroundColor: "#00959C",
+                    fontWeight: "600",
+                    height: "90%",
+                    maxWidth: "100%",
+                    minWidth: "50px",
+                    fontSize: "0.8rem",
+                    lineHeight: "24px",
+                    fontFamily: "Inter",
+                    margin: "-1px 1035px 10px",
+                    alignItems: "center",
+                  }}
+                >
+                  Buy New Policy
+                </Button>
               </Col>
             </Row>
-          </Card>
+          </div>
+          <Row>
+                <Col
+                xs={{ span: 24 }}
+                sm={{ span: 24 }}
+                md={{ span: 24, pull: 0 }}
+                lg={{ span: 24, offset: 0 }}
+                xl={{ span: 24, offset: 0 }}
+                xxl={{ span: 24, offset: 24 }}
+                >
+          <div className="card">
+            <Card
+              style={{
+                maxWidth: "100%",
+             
+                height: "67%",
+                left: 80,
+                top: 6,
+              }}
+            >
+                  <Table
+                    className="table-row"
+                    dataSource={dataSource}
+                    columns={columns}
+                    pagination={paginationConfig}
+                  />
+                  {/* <Pagination showQuickJumper defaultCurrent={1} total={100} onChange={onChange} defaultPageSize={4} /> */}
+            </Card>
+          </div>
+          </Col>
+        </Row>
           <>
             <ViewPolicyModal
               key={isPolicyType}
@@ -400,7 +451,10 @@ export default function DashboardSubscriptions() {
             />
           </>
         </Content>
+        </Col>
+          </Row>
       </Layout>
+      </Row>
     </div>
   );
 }
