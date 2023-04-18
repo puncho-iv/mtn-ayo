@@ -17,7 +17,8 @@
 .ant-layout-footer{
     align-content: flex-end;
     margin-bottom: 10rem !important;
-    margin-top: 6rem !important;
+    margin-top: 6.9rem !important;
+    background: #F8F8F8 !important;
 }
 
 .header{
@@ -30,9 +31,17 @@
   .footer{
     width: 110rem;
     height: 2rem;
-    margin: 75rem 10rem -20rem -12rem;
+    margin: 78rem 10rem -15rem -12rem;
     z-index:  0;
     background-color: transparent !important;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .buyPolicy {
+      margin: 0 auto !important;
+      width: 100% !important;
+      max-width: 300px !important;
+    }
   }
 
   

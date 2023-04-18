@@ -53,7 +53,7 @@ export default function DashboardSubscriptions() {
   
   const paginationConfig = {
     pageSize: 4,
-    style: { margin: "0 430px 0" },
+    style: { margin: "0 auto" },
     className: "pagination",
   };
   const ViewPolicy = (policy: any) => {
@@ -109,7 +109,7 @@ export default function DashboardSubscriptions() {
       status: "Active",
       registration: "01/01/2021",
       amount: "GHS 500.00",
-      expiration: "01/01/2024"
+      expiration: "01/01/2025"
     },
     {
       key: "2",
@@ -301,7 +301,7 @@ export default function DashboardSubscriptions() {
       <Row>
       <Layout className="container">
       <Row gutter={[16, 16]}>
-            <Col xs={19} sm={20} md={22} lg={24} xl={22}>
+            <Col xs={21} sm={20} md={22} lg={24} xl={22}>
         <Header
           style={{
             backgroundColor: "white",
@@ -313,8 +313,8 @@ export default function DashboardSubscriptions() {
             <h3 className="title">
               Hello, Vikers<span className="emoji">👋</span>
             </h3>
-            <Row>
-            <Col xs={{ span: 5, pull: 16 }} md={{ span: 6, pull: 24 }} lg={{ span: 6, offset: 24 }}>
+            <Row justify="start"  style={{ marginBottom: "20px", marginLeft: "10px" }}>
+              <Col xs={24} sm={24} md={12} lg={10} xl={6}>
                 <div className="user">
                   <Space wrap size={16}>
                     <Avatar
@@ -352,11 +352,13 @@ export default function DashboardSubscriptions() {
         />
         <Content>
           <div className="mid">
+          
+          
             <h3
               className="section-title"
               style={{
                 alignItems: "center",
-                margin: "20px 80px -25px",
+                margin: "20px 80px 15px",
                 fontSize: "18px",
                 color: "black",
                 fontWeight: "600",
@@ -366,25 +368,28 @@ export default function DashboardSubscriptions() {
             >
               Active Subscriptions
             </h3>
+            <Row  style={{ marginTop: "-40px" }}>
+            <Col>
                 <Button
                   className="buyPolicy"
                   type="primary"
                   style={{
                     backgroundColor: "#00959C",
                     fontWeight: "600",
-                    height: "100%",
+                    height: "85%",
                     maxWidth: "100%",
                     minWidth: "50px",
                     fontSize: "0.8rem",
                     lineHeight: "28px",
                     fontFamily: "Inter",
-                    margin: "-5px 1060px 15px",
-                    alignItems: "center",
+                    margin: "-10px 1070px 17px",
+                    alignItems: "center",                 
                   }}
                 >
                   Buy New Policy
                 </Button>
-    
+                </Col>
+            </Row>      
           </div>
 
           <div className="card">

@@ -80,7 +80,7 @@ export default function RenewPolicyModal({
     width: 450,
     backgroundColor: thirdParty ? "#EFFEFF" : "#F8F8F8",
     borderColor: thirdParty ? "#00959C" : "transparent",
-    maxHeight: "8vw",
+    height: "8vw",
     marginLeft: "8%",
     marginBottom: "-3%",
     marginTop: "5%",
@@ -180,37 +180,35 @@ export default function RenewPolicyModal({
             Please provide us with your car registration number to proceed.
           </Typography>
           <div className="CustomModalBody">
+          <Row justify="center">
+              <Col>
             <Form.Item
               label="Registration Number*"
               name="regnumber"
               style={{
                 textAlign: "center",
-                marginLeft: "20.5%",
+                marginLeft: "18%",
                 marginTop: "4%",
               }}
             >
               <Input
                 placeholder="GZ 1002 2023"
                 style={{
-                  marginLeft: "-25%",
+                  marginLeft: "-19%",
                   width: "19.5rem",
                   fontFamily: "Inter",
                 }}
               />
             </Form.Item>
+            </Col>
+            </Row>
           </div>
           <div className="CustomModalBody">
             <Row>
               <Col
-                                xs={{ span: 18, pull: 2 }}
-                                sm={{ span: 18, push: 1 }}
-                                md={{ span: 8, push: 9 }}
-                                lg={{ span: 18, push: 4 }}
-                                xl={{ span: 20, offset: 2 }}
-                                xxl={{ span: 20, offset: 24 }}
                 style={{
                   textAlign: "right",
-                  marginLeft: "-19.8%",
+                  marginLeft: "22%",
                   marginTop: "2%",
                   marginBottom: "15%",
                 }}
@@ -254,7 +252,7 @@ export default function RenewPolicyModal({
               Select a policy you would love to undertake.
             </span>
           </Typography>
-          <div className="card">
+          <div className="modalCard">
             <Card
                     className="thirdParty"
                     onClick={handleThirdParty}

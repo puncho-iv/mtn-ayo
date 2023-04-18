@@ -16,6 +16,7 @@ body {
   background-color: #FFFFFF;
   margin: 0px;
   padding: 0px;
+  overflow: hidden;
 }
 
 .ant-menu-item:focus,
