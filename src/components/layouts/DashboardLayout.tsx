@@ -1,9 +1,8 @@
 import { useState, ReactNode, Key } from "react";
 import type { MenuProps } from "antd";
-import { Layout, Menu, theme, Typography, Card } from "antd";
-import { Outlet } from "react-router-dom";
+import { Layout, Menu, theme, Typography, Card, } from "antd";
+import { Link, Outlet } from "react-router-dom";
 import beizure from "../../assets/Vector.png";
-import Logo from "../../assets/Logo.png";
 import {
   RiHome7Line,
   RiCoinsLine,
@@ -17,8 +16,7 @@ import "../layouts/DashboardLayout.scss"
 import AppFooter from "../../pages/AppFooter";
 import { Footer } from "antd/es/layout/layout";
 
-const { Header, Content, Sider } = Layout;
-const  Link  = Typography;
+const { Header, Content, Sider } = Layout;    
 const ICON_SIZE = { fontSize: "18px" };
 
 type MenuItem = Required<MenuProps>["items"][number];
@@ -120,7 +118,7 @@ export function DashboardLayout() {
                 We are here to help just get in touch with the link below
               </Typography>
               <Link
-                href="https://ant.design"
+                to="https://ant.design"
                 target="_blank"
                 style={{
                   fontSize: "11px",

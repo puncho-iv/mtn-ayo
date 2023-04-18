@@ -202,7 +202,12 @@ export default function RenewPolicyModal({
           <div className="CustomModalBody">
             <Row>
               <Col
-                xs={24}
+                                xs={{ span: 18, pull: 2 }}
+                                sm={{ span: 18, push: 1 }}
+                                md={{ span: 8, push: 9 }}
+                                lg={{ span: 18, push: 4 }}
+                                xl={{ span: 20, offset: 2 }}
+                                xxl={{ span: 20, offset: 24 }}
                 style={{
                   textAlign: "right",
                   marginLeft: "-19.8%",

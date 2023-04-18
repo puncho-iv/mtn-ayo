@@ -9,6 +9,12 @@
     margin: 0 0 0 -25px;
     flex-direction: column;
   }
+
+  #Layout{
+    float: none;
+    margin-right: 0;
+    transition: all 250ms ease-in-out;
+  }
   
   .bgColor {
     background-color: transparent !important;
@@ -19,17 +25,22 @@
     top: -15px;
     font-family: Inter;
   }
-  .table-row{
-  
-    width: 65rem;
-   }
 
+  .card{
+    margin-left: 0rem;
+    margin-top: 10px;
+    margin-bottom: -150px;
+    height: 50rem;
+    border: #555;
+  }
 
   .avatar{
     margin-left: 50px;
     display: flex;
     padding: 0;
-
+    float: none;
+    margin-right: 0;
+    transition: all 250ms ease-in-out;
   }
 
   .title{
@@ -50,7 +61,7 @@
 
   .user{
     display: flex;
-    margin-left: -170px;
+    margin-left: -150px;
     margin-top: -40px;
     flex-grow: 6;
   }

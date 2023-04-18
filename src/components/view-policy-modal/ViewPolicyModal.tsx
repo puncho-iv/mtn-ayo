@@ -15,15 +15,32 @@ import { useState } from "react";
 import { TiWarningOutline } from "react-icons/ti";
 
 interface ViewPolicyModalProps {
+  key: string;
+  policy?: PolicyType;
   isOpen: boolean;
-  view: void;
+  onViewPolicy: () => void;
   onCancel: () => void;
-  onViewPolicy: () => any;
+}
+
+type PolicyType = {
+  // Define the properties of the PolicyType type here
+  name: string;
+  description: string;
+  startDate: Date;
+  endDate: Date;
+  isActive: boolean;
+}
+
+const props = {
+  key: 'modal-key',
+  isOpen: true,
+  onViewPolicy: () => {},
+  onCancel: () => {},
 }
 
 export default function ViewPolicyModal({
   isOpen,
-  view,
+  key,
   onCancel,
   onViewPolicy,
 }: ViewPolicyModalProps) {

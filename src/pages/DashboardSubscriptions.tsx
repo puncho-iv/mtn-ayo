@@ -42,12 +42,13 @@ export default function DashboardSubscriptions() {
   const [step, setStep] = useState(1);
   const [isPolicyType, setPolicyType] = useState();
 
-  // const { useBreakpoint } = Grid;
-  // const screens = useBreakpoint();
   interface RecordType {
-    registration: Date;
-    expiration: Date;
-    policy: string;
+      key: string;
+      policy: string;
+      status: string;
+      registration: string;
+      amount: string;
+      expiration?: string;
   }
   
   const paginationConfig = {
@@ -108,6 +109,7 @@ export default function DashboardSubscriptions() {
       status: "Active",
       registration: "01/01/2021",
       amount: "GHS 500.00",
+      expiration: "01/01/2024"
     },
     {
       key: "2",
@@ -115,6 +117,7 @@ export default function DashboardSubscriptions() {
       status: "Inactive",
       registration: "01/01/2022",
       amount: "GHS 250.00",
+      expiration: "01/01/2023"
     },
     {
       key: "3",
@@ -122,6 +125,7 @@ export default function DashboardSubscriptions() {
       status: "Pending",
       registration: "01/01/2021",
       amount: "GHS 750.00",
+      expiration: "01/01/2022"
     },
     {
       key: "4",
@@ -129,6 +133,7 @@ export default function DashboardSubscriptions() {
       status: "Inactive",
       registration: "01/01/2020",
       amount: "GHS 1000.00",
+      expiration: "01/01/2020"
     },
     {
       key: "5",
@@ -170,51 +175,50 @@ export default function DashboardSubscriptions() {
       render: (policy: string, record: RecordType) => {
         const registrationDate = new Date(record.registration);
         const currentDate = new Date();
-        const expirationDate = new Date(record.expiration);
-        expirationDate.setFullYear(expirationDate.getFullYear() + 1);
-        const expired = currentDate > expirationDate;
+        const expirationDate = record.expiration ? new Date(record.expiration) : null;
+    
+        if (expirationDate) {
+          expirationDate.setFullYear(expirationDate.getFullYear() + 1);
+        }
+    
+        const expired = expirationDate ? currentDate > expirationDate : false;
         const due =
-          currentDate >= expirationDate || currentDate <= registrationDate;
-        const daysToExpire = Math.floor(
-          (expirationDate.getTime() - currentDate.getTime()) /
-            (1000 * 60 * 60 * 24)
-        );
+          expirationDate && (currentDate >= expirationDate || currentDate <= registrationDate);
+        const daysToExpire = expirationDate
+          ? Math.floor((expirationDate.getTime() - currentDate.getTime()) / (1000 * 60 * 60 * 24))
+          : null;
     
         const tags = [];
     
         if (expired) {
           tags.push(
-            <Tag color="red" style={{ fontSize: "12px" }}>
+            <Tag color="red" style={{ fontSize: "12px", borderRadius: "10px" }}>
               Expired
             </Tag>
           );
         } else if (due) {
           tags.push(
-            <Tag color="orange" style={{ fontSize: "12px" }}>
+            <Tag color="orange" style={{ fontSize: "12px", borderRadius: "10px" }}>
               Due soon
             </Tag>
           );
         } else {
-          // tags.push(
-          //   <Tag color="green" style={{ fontSize: "12px" }}>
-          //     Active
-          //   </Tag>
-          // );
           tags.push(
-            <Tag color="blue" style={{ fontSize: "8px", borderRadius: "10px" }}>
-              {daysToExpire} days to expire
+            <Tag color="green" style={{ fontSize: "12px", borderRadius: "10px" }}>
+              Active
             </Tag>
           );
+          if (daysToExpire !== null) {
+            tags.push(
+              <Tag color="blue" style={{ fontSize: "8px", borderRadius: "10px" }}>
+                {daysToExpire} days to expire
+              </Tag>
+            );
+          }
         }
     
         return (
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              marginTop: "-5px",
-            }}
-          >
+          <div style={{ display: "flex", alignItems: "center", marginTop: "-5px" }}>
             <div
               style={{
                 backgroundColor: "#ECECED",
@@ -234,13 +238,14 @@ export default function DashboardSubscriptions() {
               ) : null}
             </div>
             <div>
-              <div style={{ fontSize: "16px",  }}>{policy}</div>
+              <div style={{ fontSize: "16px" }}>{policy}</div>
               <div>{tags}</div>
             </div>
           </div>
         );
       },
     },
+    
     {
       dataIndex: "status",
       title: "Status",
@@ -295,27 +300,21 @@ export default function DashboardSubscriptions() {
     <div>
       <Row>
       <Layout className="container">
-      <Row>
-            <Col xs={19} sm={20} md={20} lg={20} xl={20} xxl={20}>
+      <Row gutter={[16, 16]}>
+            <Col xs={19} sm={20} md={22} lg={24} xl={22}>
         <Header
           style={{
             backgroundColor: "white",
             padding: "24px 50px",
           }}
         >
+
           <div className="avatar">
             <h3 className="title">
               Hello, Vikers<span className="emoji">👋</span>
             </h3>
             <Row>
-              <Col
-                xs={{ span: 18, pull: 24 }}
-                sm={{ span: 18, pull: 24 }}
-                md={{ span: 8, offset: 8 }}
-                lg={{ span: 18, pull: 24 }}
-                xl={{ span: 20, offset: 24 }}
-                xxl={{ span: 20, offset: 24 }}
-              >
+            <Col xs={{ span: 5, pull: 16 }} md={{ span: 6, pull: 24 }} lg={{ span: 6, offset: 24 }}>
                 <div className="user">
                   <Space wrap size={16}>
                     <Avatar
@@ -337,9 +336,10 @@ export default function DashboardSubscriptions() {
                     />
                   </Space>
                 </div>
-              </Col>
-            </Row>
+          </Col>
+          </Row>
           </div>
+
         </Header>
         <Divider
           className="headerDivide"
@@ -350,9 +350,7 @@ export default function DashboardSubscriptions() {
             zIndex: 0,
           }}
         />
-
         <Content>
-
           <div className="mid">
             <h3
               className="section-title"
@@ -368,70 +366,48 @@ export default function DashboardSubscriptions() {
             >
               Active Subscriptions
             </h3>
-
-            <Row>
-              <Col
-                xs={{ span: 15, pull: 24 }}
-                sm={{ span: 8, pull: 22 }}
-                md={{ span: 10, pull: 9 }}
-                lg={{ span: 8, pull: 11 }}
-                xl={{ span: 5, offset: 11 }}
-                xxl={{ span: 24, offset: 16 }}
-              >
                 <Button
                   className="buyPolicy"
                   type="primary"
                   style={{
                     backgroundColor: "#00959C",
                     fontWeight: "600",
-                    height: "90%",
+                    height: "100%",
                     maxWidth: "100%",
                     minWidth: "50px",
                     fontSize: "0.8rem",
-                    lineHeight: "24px",
+                    lineHeight: "28px",
                     fontFamily: "Inter",
-                    margin: "-5px 1035px 10px",
+                    margin: "-5px 1060px 15px",
                     alignItems: "center",
                   }}
                 >
                   Buy New Policy
                 </Button>
-              </Col>
-            </Row>
+    
           </div>
-          <Row>
-                <Col
-                xs={{ span: 24 }}
-                sm={{ span: 24 }}
-                md={{ span: 24, pull: 0 }}
-                lg={{ span: 24, offset: 0 }}
-                xl={{ span: 24, offset: 0 }}
-                xxl={{ span: 22, offset: 0 }}
-                >
+
           <div className="card">
-            <Card
+         <Card
               style={{
-                maxWidth: "100%",
-                
-                height: "67%",
+                maxWidth: "94%",
+                maxHeight: "47.1%",
                 left: 80,
-                top: 6,
+                top: -10,
               }}
-            >
+            > 
                   <Table
-                    className="table-row"
                     dataSource={dataSource}
                     columns={columns}
                     pagination={paginationConfig}
                   />
                   {/* <Pagination showQuickJumper defaultCurrent={1} total={100} onChange={onChange} defaultPageSize={4} /> */}
-            </Card>
+          </Card>
           </div>
-          </Col>
-        </Row>
+
           <>
             <ViewPolicyModal
-              key={isPolicyType}
+              key={isPolicyType ? String(isPolicyType) : ""}
               policy={isPolicyType}
               isOpen={isViewPolicyModalOpen}
               // confirmLoading={confirmLoading}
@@ -448,9 +424,12 @@ export default function DashboardSubscriptions() {
             />
           </>
         </Content>
-        </Col>
-          </Row>
+        
+          
+          </Col>
+        </Row>
       </Layout>
+      
       </Row>
     </div>
   );
