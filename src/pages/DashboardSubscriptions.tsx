@@ -308,7 +308,6 @@ export default function DashboardSubscriptions() {
             padding: "24px 50px",
           }}
         >
-
           <div className="avatar">
             <h3 className="title">
               Hello, Vikers<span className="emoji">👋</span>
@@ -351,9 +350,7 @@ export default function DashboardSubscriptions() {
           }}
         />
         <Content>
-          <div className="mid">
-          
-          
+          <div className="mid">         
             <h3
               className="section-title"
               style={{
@@ -368,26 +365,26 @@ export default function DashboardSubscriptions() {
             >
               Active Subscriptions
             </h3>
-            <Row  style={{ marginTop: "-40px" }}>
-            <Col>
+            <Row style={{ marginTop: "-50px", marginBottom: "20px"}}>
+            <Col xs={{ span: 11, offset: 19 }} lg={{ span: 6, offset: 22 }}>
+            <Space wrap size={16}>
                 <Button
                   className="buyPolicy"
                   type="primary"
                   style={{
                     backgroundColor: "#00959C",
                     fontWeight: "600",
-                    height: "85%",
-                    maxWidth: "100%",
-                    minWidth: "50px",
+                    height: "40px",
+                    width: "100%", // set the width to 100%
                     fontSize: "0.8rem",
-                    lineHeight: "28px",
                     fontFamily: "Inter",
-                    margin: "-10px 1070px 17px",
-                    alignItems: "center",                 
+                    alignItems: "center",
+                    justifyContent: "center" // horizontally center the button within the column
                   }}
-                >
+                >           
                   Buy New Policy
                 </Button>
+                </Space>
                 </Col>
             </Row>      
           </div>
