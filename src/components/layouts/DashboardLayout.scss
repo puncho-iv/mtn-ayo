@@ -1,0 +1,42 @@
+.ant-menu-item,
+.ant-menu-item-active,
+.ant-menu-item-selected{
+    background-color: transparent !important;
+}
+
+.ant-layout-sider-trigger{
+    background-color: #f8f8f8 !important;
+    border-color: none;
+    margin-bottom: 0.2% !important;
+}
+
+.ant-menu-item-icon:hover{
+  color: #f8f8f8 !important;
+}
+
+.ant-layout-footer{
+    align-content: flex-end;
+    margin-bottom: 10rem !important;
+    margin-top: 20rem !important;
+    background-color: transparent;
+}
+
+.header{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  height : 10px;
+}
+
+
+.footer {
+  margin-top: 3rem;
+  margin-bottom: 0;
+  z-index: 0;
+  background-color: transparent !important;
+}
+
+
+
+
+  
